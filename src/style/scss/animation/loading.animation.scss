@@ -1,0 +1,60 @@
+@keyframes loading {
+  0% {
+    @include transform-rotate(0);
+  }
+  100% {
+    @include transform-rotate(360);
+  }
+}
+
+@keyframes loading-circle {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -600;
+  }
+}
+
+@keyframes loading-circle-full-color {
+  0% {
+    stroke-dashoffset: 0;
+    stroke: #e09f7d;
+  }
+  11% {
+    stroke-dashoffset: -66;
+    stroke: #ef5d60;
+  }
+  22% {
+    stroke-dashoffset: -133;
+    stroke: #ec4067;
+  }
+  33% {
+    stroke-dashoffset: -200;
+    stroke: #a01a7d;
+  }
+  44% {
+    stroke-dashoffset: -266;
+    stroke: #311847;
+  }
+  55% {
+    stroke-dashoffset: -333;
+    stroke: #311847;
+  }
+  66% {
+    stroke-dashoffset: -400;
+    stroke: #a01a7d;
+  }
+  77% {
+    stroke-dashoffset: -466;
+    stroke: #ec4067;
+  }
+  88% {
+    stroke-dashoffset: -533;
+    stroke: #ef5d60;
+  }
+  100% {
+    stroke-dashoffset: -600;
+    stroke: #e09f7d;
+  }
+}

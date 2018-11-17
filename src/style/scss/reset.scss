@@ -1,0 +1,10 @@
+body {
+  @include margin(all, 0);
+  @include padding(all, 48px 0);
+
+  min-height: calc(100vh - 96px);
+
+  * {
+    box-sizing: border-box;
+  }
+}
