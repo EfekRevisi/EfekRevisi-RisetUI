@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    command: npm run dev
+    volumes:
+      - .:/root/web
+    ports:
+      - 8080:8080
+
+  storybook:
+    build: .
+    command: npm run storybook
+    volumes:
+      - .:/root/web
+    ports:
+      - 6006:6006
+
+volumes:
+  data: {}

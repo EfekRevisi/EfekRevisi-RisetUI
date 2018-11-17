@@ -1,0 +1,7 @@
+.git
+.idea
+.jest_coverage
+npm-debug.log
+node_modules
+docker-compose.yaml
+Dockerfile

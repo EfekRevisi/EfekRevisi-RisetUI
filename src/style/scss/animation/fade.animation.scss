@@ -1,0 +1,11 @@
+.blur {
+  &-transition {
+    @include opacity(1);
+    @include transition(opacity 0.31s cubic-bezier(0.7, 0.3, 0, 1));
+  }
+
+  &-enter,
+  &-leave {
+    @include opacity(0);
+  }
+}
