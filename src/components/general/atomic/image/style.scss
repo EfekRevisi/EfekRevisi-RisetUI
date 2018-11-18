@@ -1,0 +1,78 @@
+$grey-light: map-get($color-general, 'grey-light');
+$black: #000;
+
+.ef-image {
+  $root: &;
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  width: 250px;
+  height: 250px;
+
+  &--rounded {
+    @include rounded(5px);
+  }
+
+  @at-root {
+    &--contain {
+      #{$root}__content {
+        object-fit: contain;
+        @include background-color(lighten($grey-light, 8));
+      }
+    }
+  }
+
+  &--gradient {
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      @include linear-gradient-multi(180deg, rgba($black, 0) 0%, rgba($black ,0.1) 70%,rgba($black, 0.25) 100%);
+      z-index: 10;
+    }
+  }
+
+  &__container {
+    position: relative;
+    width: inherit;
+    height: inherit;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  &__blur {
+    position: absolute;
+    width: calc(100% + 50px);
+    max-width: calc(100% + 50px);
+    height: calc(100% + 50px);
+    z-index: 1;
+    left: -25px;
+    top: -25px;
+    @include blur(10px);
+  }
+
+  &__content {
+    display: block;
+    width:inherit;
+    max-width:inherit;
+    height:inherit;
+    object-fit: cover;
+  }
+
+  &__loading {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    @include background-color(rgba($grey-light, .5));
+    z-index: 3;
+  }
+}
