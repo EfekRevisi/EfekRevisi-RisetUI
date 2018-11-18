@@ -1,0 +1,9 @@
+.ef-header {
+  align-items: center;
+  justify-content: space-between;
+  top: 0;
+  width: 100%;
+
+  @include padding(all, 20px);
+  @include background-color($white);
+}

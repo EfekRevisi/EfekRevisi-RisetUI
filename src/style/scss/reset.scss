@@ -1,8 +1,8 @@
 body {
   @include margin(all, 0);
-  @include padding(all, 48px 0);
+  @include padding(all, 0 0 48px);
 
-  min-height: calc(100vh - 96px);
+  min-height: calc(100vh - 48px);
 
   * {
     box-sizing: border-box;
