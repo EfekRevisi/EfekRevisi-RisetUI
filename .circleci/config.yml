@@ -95,11 +95,11 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          - v1-dependencies-
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
       - add_ssh_keys:
           fingerprints:
-            - "7f:a8:7c:7c:70:78:db:0e:ae:e5:9c:ac:e8:84:e5:c2"
+            - '7f:a8:7c:7c:70:78:db:0e:ae:e5:9c:ac:e8:84:e5:c2'
       - run:
           name: Install dependencies
           command: yarn install
@@ -145,6 +145,10 @@ workflows:
                 - develop
                 - master
                 - staging
+                - /^feat.*/
+                - /^fix.*/
+                - /^hotfix.*/
+                - /^ci.*/
       - linter:
           filters:
             branches:
@@ -152,6 +156,10 @@ workflows:
                 - develop
                 - master
                 - staging
+                - /^feat.*/
+                - /^fix.*/
+                - /^hotfix.*/
+                - /^ci.*/
           requires:
             - build
       - test:
@@ -161,6 +169,10 @@ workflows:
                 - develop
                 - master
                 - staging
+                - /^feat.*/
+                - /^fix.*/
+                - /^hotfix.*/
+                - /^ci.*/
           requires:
             - build
       - deploy:
@@ -170,6 +182,10 @@ workflows:
                 - develop
                 - master
                 - staging
+                - /^feat.*/
+                - /^fix.*/
+                - /^hotfix.*/
+                - /^ci.*/
           requires:
             - linter
             - test
