@@ -67,8 +67,6 @@ jobs:
     branches:
       ignore:
         - gh-pages
-        - develop
-        - staging
       only:
         - master
     docker:
