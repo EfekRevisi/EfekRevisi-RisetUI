@@ -3,25 +3,129 @@ jobs:
   build:
     docker:
       - image: circleci/node:8.11
-
     working_directory: ~/repo
-
     steps:
       - checkout
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
             - v1-dependencies-
-      - run: yarn install
-
+      - run:
+          name: Install depedencies
+          command: yarn install
       - save_cache:
           paths:
             - web/node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: Create folder if static images is not found
+          command: mkdir -p /home/circleci/repo/static/img
+      - run:
+          name: Build Apps
+          command: yarn prod
+  linter:
+    docker:
+      - image: circleci/node:8.11
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run:
+          name: Install depedencies
+          command: yarn install
+      - save_cache:
+          paths:
+            - web/node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: Run Linter
+          command: yarn lint
+  test:
+    docker:
+      - image: circleci/node:8.11
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run:
+          name: Install depedencies
+          command: yarn install
+      - save_cache:
+          paths:
+            - web/node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run:
+          name: Run unit test
+          command: yarn test
+  deploy:
+    filters:
+      branches:
+        ignore:
+          - gh-pages
+    docker:
+      - image: circleci/node:8.11
+    working_directory: ~/repo
+    environment:
+      - SOURCE_BRANCH: master
+      - TARGET_BRANCH: gh-pages
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+      - run:
+          name: Install dependencies
+          command: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - deploy:
+          name: Deploy
+          command: |
+            if [ $CIRCLE_BRANCH == $SOURCE_BRANCH ]; then
+              git config --global user.email $GH_EMAIL
+              git config --global user.name $GH_NAME
 
-      - run: yarn test
+              git clone $CIRCLE_REPOSITORY_URL out
+
+              cd out
+              git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
+              git rm -rf .
+              cd ..
+
+              yarn prod
+
+              cp -a dist/. out/.
+
+              mkdir -p out/.circleci && cp -a .circleci/. out/.circleci/.
+              cd out
+
+              git add -A
+              git commit -m "Automated deployment to GitHub Pages: ${CIRCLE_SHA1}" --allow-empty
+
+              git push origin $TARGET_BRANCH
+            fi
 workflows:
   version: 2
   build:
     jobs:
       - build
+      - linter:
+          requires:
+            - build
+      - test:
+          requires:
+            - linter
+      - deploy:
+          requires:
+            - build
+            - linter
+            - test
