@@ -103,6 +103,7 @@ jobs:
               git rm -rf .
               cd ..
 
+              mkdir -p /home/circleci/repo/static/img
               yarn prod
 
               cp -a dist/. out/.
