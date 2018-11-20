@@ -138,15 +138,38 @@ workflows:
   version: 2
   build:
     jobs:
-      - build
+      - build:
+          filters:
+            branches:
+              only:
+                - develop
+                - master
+                - staging
       - linter:
+          filters:
+            branches:
+              only:
+                - develop
+                - master
+                - staging
           requires:
             - build
       - test:
-          requires:
-            - linter
-      - deploy:
+          filters:
+            branches:
+              only:
+                - develop
+                - master
+                - staging
           requires:
             - build
+      - deploy:
+          filters:
+            branches:
+              only:
+                - develop
+                - master
+                - staging
+          requires:
             - linter
             - test
