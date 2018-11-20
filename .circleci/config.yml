@@ -64,9 +64,10 @@ jobs:
           name: Run unit test
           command: yarn test
   deploy:
-    branches:
-      ignore:
-        - gh-pages
+    filters:
+      branches:
+        ignore:
+          - gh-pages
     docker:
       - image: circleci/node:8.11
     working_directory: ~/repo
