@@ -23,7 +23,6 @@ jobs:
       - run:
           name: Build Apps
           command: yarn prod
-
   linter:
     docker:
       - image: circleci/node:8.11
@@ -44,7 +43,6 @@ jobs:
       - run:
           name: Run Linter
           command: yarn lint
-
   test:
     docker:
       - image: circleci/node:8.11
