@@ -74,6 +74,8 @@ jobs:
     environment:
       - SOURCE_BRANCH: master
       - TARGET_BRANCH: gh-pages
+      - GH_EMAIL: irfanandriansyah10@gmail.com
+      - GH_NAME: Irfan Andriansyah
     steps:
       - checkout
       - restore_cache:
