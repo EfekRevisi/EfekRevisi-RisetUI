@@ -19,6 +19,7 @@ jobs:
             - web/node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
+      - run: mkdir -p /home/circleci/repo/static/img
       - run: yarn prod
   linter:
     docker:
