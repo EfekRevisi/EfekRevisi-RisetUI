@@ -75,6 +75,9 @@ jobs:
       - run:
           name: Run unit test
           command: yarn test
+      - run:
+          name: Set codecov
+          command: node_modules/.bin/codecov --token=d566eab6-c25b-476c-8bd3-2d6bcaa7998c
   deploy:
     filters:
       branches:
