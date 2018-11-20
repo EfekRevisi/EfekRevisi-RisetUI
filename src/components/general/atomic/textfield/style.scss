@@ -1,0 +1,6 @@
+.ef-textfield {
+  align-items: center;
+  justify-content: space-between;
+
+  @include rounded(5px);
+}
