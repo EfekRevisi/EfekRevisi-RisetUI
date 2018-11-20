@@ -1,6 +1,10 @@
 version: 2
 jobs:
   build:
+    filters:
+      branches:
+        ignore:
+          - gh-pages
     docker:
       - image: circleci/node:8.11
     working_directory: ~/repo
@@ -24,6 +28,10 @@ jobs:
           name: Build Apps
           command: yarn prod
   linter:
+    filters:
+      branches:
+        ignore:
+          - gh-pages
     docker:
       - image: circleci/node:8.11
     working_directory: ~/repo
@@ -44,6 +52,10 @@ jobs:
           name: Run Linter
           command: yarn lint
   test:
+    filters:
+      branches:
+        ignore:
+          - gh-pages
     docker:
       - image: circleci/node:8.11
     working_directory: ~/repo
