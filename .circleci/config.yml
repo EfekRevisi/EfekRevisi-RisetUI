@@ -141,26 +141,26 @@ workflows:
       - build:
           filters:
             branches:
-              only:
+              ignore:
                 - gh-pages
       - linter:
           filters:
             branches:
-              only:
+              ignore:
                 - gh-pages
           requires:
             - build
       - test:
           filters:
             branches:
-              only:
+              ignore:
                 - gh-pages
           requires:
             - build
       - deploy:
           filters:
             branches:
-              only:
+              ignore:
                 - gh-pages
           requires:
             - linter
