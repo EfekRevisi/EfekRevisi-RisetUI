@@ -1,10 +1,28 @@
 body {
   @include margin(all, 0);
-  @include padding(all, 48px 0);
+  @include padding(all, 0 0 48px);
 
-  min-height: calc(100vh - 96px);
+  overflow-x: hidden;
+  min-height: calc(100vh - 48px);
 
   * {
     box-sizing: border-box;
   }
+}
+
+// Form
+::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  @include font-color(map-get($color-general, grey-dark));
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  @include font-color(map-get($color-general, grey-dark));
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  @include font-color(map-get($color-general, grey-dark));
 }

@@ -1,16 +1,16 @@
 $white: #fff;
-$primary: #ef5d60;
-$dark-primary: #ec4067;
-$secondary: #a01a7d;
+$primary: #605aa9;
+$dark-primary: darken(#605aa9, 10);
+$secondary: #f67d39;
 
 /**
  * GLobal Color Variable
  */
 
 $color-general: (
-  primary: #ef5d60,
-  dark-primary: #ec4067,
-  secondary: #a01a7d,
+  primary: #605aa9,
+  dark-primary: darken(#605aa9, 10),
+  secondary: #f67d39,
   dark-secondary: #311847,
   third: #e09f7d,
   transparent: transparent,
