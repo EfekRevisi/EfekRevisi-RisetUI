@@ -25,7 +25,7 @@
         key="loading"
         class="ef-image__loading blur-transition"
       >
-        <ui-loading
+        <ui-atomic-loading
           key="loading"
         />
       </div>

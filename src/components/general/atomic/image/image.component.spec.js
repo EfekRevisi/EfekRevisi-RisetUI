@@ -4,11 +4,13 @@ import { shallowMount } from '@vue/test-utils'
 import ImageComponent from '@/components/general/atomic/image/image.component'
 import LoadingComponent from '@/components/general/atomic/loading/loading.component'
 
-Vue.component('ui-loading', LoadingComponent)
+Vue.component('ui-atomic-loading', LoadingComponent)
 
 const DefaultProps = {
-  src: 'https://images.unsplash.com/photo-1526868452228-6590028c2fac?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c1becfc7e858de96fadc0dd171b6905a&auto=format&fit=crop&w=1050&q=80',
-  placeholder: 'https://images.unsplash.com/photo-1526868452228-6590028c2fac?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c1becfc7e858de96fadc0dd171b6905a&auto=format&fit=crop&w=500&q=60'
+  src:
+    'https://images.unsplash.com/photo-1526868452228-6590028c2fac?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c1becfc7e858de96fadc0dd171b6905a&auto=format&fit=crop&w=1050&q=80',
+  placeholder:
+    'https://images.unsplash.com/photo-1526868452228-6590028c2fac?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c1becfc7e858de96fadc0dd171b6905a&auto=format&fit=crop&w=500&q=60'
 }
 
 describe('Testing images component in general component', () => {
