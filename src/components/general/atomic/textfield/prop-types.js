@@ -19,6 +19,14 @@ export default {
     type: Boolean,
     default: false
   },
+  border: {
+    type: Boolean,
+    default: true
+  },
+  reverse: {
+    type: Boolean,
+    default: false
+  },
   value: {
     type: Boolean | Number | String,
     default: true

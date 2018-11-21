@@ -1,13 +1,15 @@
 <template>
   <div
     :class="classes"
-    class="ef-textfield flex p-5"
+    class="ef-textfield flex"
   >
     <label
       :for="name"
-      class="ef-textfield__label"
+      class="ef-textfield__label flex"
     >
       <ui-atomic-icon
+        :font-size="26"
+        class="text--secondary"
         type="material-icons"
       >
         {{ icon }}
@@ -18,7 +20,8 @@
       :name="name"
       :type="type"
       :placeholder="placeholder"
-      class="ef-textfield__input"
+      autocomplete="off"
+      class="ef-textfield__input block"
     >
   </div>
 </template>
@@ -35,7 +38,9 @@ export default {
   computed: {
     classes() {
       return {
-        'ef-textfield--shadow': this.shadow
+        'ef-textfield--border': this.border,
+        'ef-textfield--shadow': this.shadow,
+        'ef-textfield--reverse': this.reverse
       }
     }
   }
