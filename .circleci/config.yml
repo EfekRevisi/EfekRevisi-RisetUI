@@ -142,50 +142,26 @@ workflows:
           filters:
             branches:
               only:
-                - develop
-                - master
-                - staging
-                - /^feat.*/
-                - /^fix.*/
-                - /^hotfix.*/
-                - /^ci.*/
+                - gh-pages
       - linter:
           filters:
             branches:
               only:
-                - develop
-                - master
-                - staging
-                - /^feat.*/
-                - /^fix.*/
-                - /^hotfix.*/
-                - /^ci.*/
+                - gh-pages
           requires:
             - build
       - test:
           filters:
             branches:
               only:
-                - develop
-                - master
-                - staging
-                - /^feat.*/
-                - /^fix.*/
-                - /^hotfix.*/
-                - /^ci.*/
+                - gh-pages
           requires:
             - build
       - deploy:
           filters:
             branches:
               only:
-                - develop
-                - master
-                - staging
-                - /^feat.*/
-                - /^fix.*/
-                - /^hotfix.*/
-                - /^ci.*/
+                - gh-pages
           requires:
             - linter
             - test
