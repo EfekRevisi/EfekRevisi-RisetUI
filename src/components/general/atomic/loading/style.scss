@@ -1,0 +1,23 @@
+.ef-loading-circle {
+  width: 30px;
+  animation: loading 1s linear infinite;
+
+  .ef-loading-circle__inner {
+    stroke: {
+      dashoffset: 0;
+      dasharray: 300;
+      width: 20;
+      miterlimit: 0;
+      linecap: round;
+    }
+    animation: loading-circle 1.5s linear infinite;
+    stroke: #f67280;
+    fill: transparent;
+  }
+
+  &.ef-loading-circle--google-type {
+    .ef-loading-circle__inner {
+      animation: loading-circle-full-color 1.5s linear infinite;
+    }
+  }
+}
